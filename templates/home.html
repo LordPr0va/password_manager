@@ -1,0 +1,24 @@
+<!-- templates/home.html-->
+{% extends 'index.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    Hi {{ user.username }}!<br><br>
+    <p><a href="{% url 'addcreds' %}">Add cred</a></p>
+     <table>
+         {% for object in creds %}
+          <tr style="border-style: solid;">
+            <th><a href="/cred/delcred_action?cred_id={{ object.id }}">X</a></th>
+            <th>{{ object.website }}</th>
+            <th>{{ object.username }}</th>
+            <th>{{ object.password }}</th>
+            <th>{{ object.category_id.name }}</th>
+
+          </tr>
+        {% endfor %}
+    </table>
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+
+{% endblock %}

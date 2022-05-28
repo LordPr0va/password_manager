@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD CRED</title>
+</head>
+<body>
+
+<form action="addcred_action" method="post">
+{% csrf_token %}
+Website:<br>
+<input name="website">
+<br><br>
+Username:<br>
+<input name="username">
+<br><br>
+Password:<br>
+<input name="password"><br>
+<label for="categories">Choose a category:</label>
+<select name="categories" id="categories">
+    {% for object in categories %}
+      <option value={{ object.id }}>{{ object.name }}</option>
+    {% endfor %}
+</select>
+<br><br>
+<input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>
